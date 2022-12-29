@@ -28,8 +28,8 @@ async function retrieveBlocks(pageId) {
 
 async function findAndReplace(blocks) {
   for (const block of blocks) {
+    if (!block.paragraph) continue;
     const textItems = block.paragraph.rich_text;
-    if (!textItems.length) continue;
     const newTextItems = textItems.map((item) => {
       const selectedText = item.text.content;
       const newText = selectedText.includes(searchValue)
